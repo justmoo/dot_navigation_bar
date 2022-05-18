@@ -56,14 +56,15 @@ class Body extends StatelessWidget {
                 child: InkWell(
                   onTap: () => onTap.call(items.indexOf(item)),
                   focusColor: _selectedColor.withOpacity(0.1),
-                  highlightColor: _selectedColor.withOpacity(0.1),
-                  splashColor: _selectedColor.withOpacity(0.1),
+                  highlightColor: Colors.transparent,
+                  splashColor: Colors.transparent,
                   hoverColor: _selectedColor.withOpacity(0.1),
                   child: Stack(children: <Widget>[
                     Padding(
-                      padding: itemPadding - (enablePaddingAnimation 
-                          ? EdgeInsets.only(right: itemPadding.right * t) 
-                          : EdgeInsets.zero),
+                      padding: itemPadding -
+                          (enablePaddingAnimation
+                              ? EdgeInsets.only(right: itemPadding.right * t)
+                              : EdgeInsets.zero),
                       child: Row(
                         children: [
                           IconTheme(
@@ -75,34 +76,6 @@ class Body extends StatelessWidget {
                             child: item.icon,
                           ),
                         ],
-                      ),
-                    ),
-                    ClipRect(
-                      child: SizedBox(
-                        height: 40,
-                        child: Align(
-                          alignment: Alignment.bottomCenter,
-                          widthFactor: t,
-                          child: Padding(
-                            padding: EdgeInsets.only(
-                                left: itemPadding.right / 0.63,
-                                right: itemPadding.right),
-                            child: DefaultTextStyle(
-                              style: TextStyle(
-                                color: Color.lerp(
-                                    _selectedColor.withOpacity(0.0),
-                                    _selectedColor,
-                                    t),
-                                fontWeight: FontWeight.w600,
-                              ),
-                              child: CircleAvatar(
-                                  radius: 2.5,
-                                  backgroundColor: dotIndicatorColor != null
-                                      ? dotIndicatorColor
-                                      : _selectedColor),
-                            ),
-                          ),
-                        ),
                       ),
                     ),
                   ]),
